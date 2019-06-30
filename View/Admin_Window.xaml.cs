@@ -56,6 +56,9 @@ namespace BrowserHistory_Server
                 case "EditUser":
                     new View.Window_Edit().ShowDialog();
                     break;
+                case "Settings":
+                    new View.Window_Settings().ShowDialog();
+                    break;
 
                 default:
                     break;

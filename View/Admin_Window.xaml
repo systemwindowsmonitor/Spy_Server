@@ -90,7 +90,7 @@
 
             </Grid>
 
-            <DataGrid Grid.Row="1" Margin="0,44.6,-0.4,0.4" Grid.RowSpan="3" >
+            <DataGrid Grid.Row="1" Margin="0,44.6,-0.4,0.4" Grid.RowSpan="3" Background="White">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="IP"/>
                     <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="ФИО"/>
@@ -136,6 +136,13 @@
                     <StackPanel Orientation="Horizontal" Margin="10 0">
                         <materialDesign:PackIcon Kind="Add" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
                         <TextBlock Text="Добавит админа" Margin="10" />
+                    </StackPanel>
+                </ListView>
+
+                <ListView Name="Settings" Foreground="#FF313131" FontFamily="Champagne &amp; Limousines" FontSize="18" MouseDoubleClick="EditUser_MouseDoubleClick">
+                    <StackPanel Orientation="Horizontal" Margin="10 0">
+                        <materialDesign:PackIcon Kind="Settings" Width="20" Height="20" Foreground="Gray" Margin="5" VerticalAlignment="Center"/>
+                        <TextBlock Text="Настройки" Margin="10" />
                     </StackPanel>
                 </ListView>
             </StackPanel>
