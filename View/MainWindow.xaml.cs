@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BrowserHistory_Server.Data;
+using System;
 using System.Data.Common;
 using System.Data.SQLite;
 using System.Diagnostics;
@@ -118,51 +119,14 @@ namespace BrowserHistory_Server
         // Открывает рабочее окно
         private async void Sign_in_Button_Input(object sender, RoutedEventArgs e)
         {
-
-            string connectionString = $"Data Source = { databaseName };";
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            DbManager db = new DbManager(databaseName);
+            db.Connect();
+            //MessageBox.Show(db.CheckLogin(Login_TextBox.Text).ToString());
+            //MessageBox.Show(db.CheckPassword(Password_PasswordBox.Password).ToString());
+            foreach (var item in db.GetPasswords())
             {
-                connection.Open();
-                SQLiteCommand command = new SQLiteCommand();
-                command.CommandText = $"SELECT id FROM User WHERE login = '{Login_TextBox.Text}'";
-                command.Connection = connection;
-
-
-
-
-                if (command.ExecuteReader().HasRows)
-                {
-                    // await Dispatcher.BeginInvoke(new Action(() => { Error_Label.Visibility = Visibility.Visible;  Thread.Sleep(400); Error_Label.Visibility = Visibility.Hidden; }));
-                    //await Dispatcher.BeginInvoke(new Action(() => { Error_Label.Visibility = Visibility.Visible; }));
-                    // Thread.Sleep(500);
-
-                    //   await Dispatcher.BeginInvoke(new Action(() => { Error_Label.Visibility = Visibility.Hidden; }));
-                    // Error_Label.Visibility = Visibility.Hidden;
-
-
-                    command.Dispose();
-                    command.CommandText = $"SELECT role FROM User WHERE password = '{Password_PasswordBox.Password}' AND login = '{Login_TextBox.Text}'";
-                    command.Connection = connection;
-                    DbDataReader ss = command.ExecuteReaderAsync().GetAwaiter().GetResult();
-                    await ss.ReadAsync();
-                    if (ss.HasRows)
-                    {
-                        switch (ss.GetValue(0))
-                        {
-
-                            case "administrator": new Admin_Window().Show(); break; ;
-                            case "user": new Work_Window().Show(); break; ;
-                        }
-                        this.Close();
-                        return;
-                    }
-
-                }
-                showError();
-
+                MessageBox.Show(item);
             }
-
-
         }
         Thread t;
         TcpClient client;
