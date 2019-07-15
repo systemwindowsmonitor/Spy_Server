@@ -90,14 +90,8 @@
 
             </Grid>
 
-            <DataGrid Grid.Row="1" Margin="0,44.6,-0.4,0.4" Grid.RowSpan="3" Background="White">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="IP"/>
-                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="ФИО"/>
-                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Геолокация"/>
-                    <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"  Header="История"/>
-                </DataGrid.Columns>
-
+            <DataGrid x:Name="MainDataGrid" Grid.Row="1" Margin="0,44.6,-0.4,0.4" Grid.RowSpan="3" Background="White">
+                
             </DataGrid>
 
         </Grid>

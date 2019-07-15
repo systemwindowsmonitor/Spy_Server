@@ -123,10 +123,11 @@ namespace BrowserHistory_Server
             db.Connect();
             //MessageBox.Show(db.CheckLogin(Login_TextBox.Text).ToString());
             //MessageBox.Show(db.CheckPassword(Password_PasswordBox.Password).ToString());
-            foreach (var item in db.GetPasswords())
+            foreach (var item in db.getUsers())
             {
-                MessageBox.Show(item);
+                MessageBox.Show(item.id, item.account_name);
             }
+            db.Disconnect();
         }
         Thread t;
         TcpClient client;

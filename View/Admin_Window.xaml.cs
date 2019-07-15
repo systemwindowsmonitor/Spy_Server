@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Linq;
 using System.Threading;
 using System.Diagnostics;
+using BrowserHistory_Server.Data;
 
 namespace BrowserHistory_Server
 {
@@ -14,9 +15,13 @@ namespace BrowserHistory_Server
     /// </summary>
     public partial class Admin_Window : Window
     {
+        string databaseName = (System.IO.Directory.GetCurrentDirectory() + "\\DB.db");
         public Admin_Window()
         {
             InitializeComponent();
+            DbManager db = new DbManager(databaseName);
+            db.Connect();
+            MainDataGrid.ItemsSource = db.getUsers();
         }
 
         class MyBrush
